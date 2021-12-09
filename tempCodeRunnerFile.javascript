@@ -1,3 +1,4 @@
+
 function mergeSort(numbers, inicio, fim) {
     if (inicio < fim) {
         let middle = (inicio + fim) >> 1;
@@ -36,10 +37,7 @@ function merge(numbers, inicio, middle, fim) {
 }
 
 
-// const arr = [5, 4, 3, 2, 1]
-// const i = 0
-// const f = arr.length - 1
-// console.log(mergeSort(arr, i, f))
-
-
-module.exports = { mergeSort }
+const arr = [5, 4, 3, 2, 1]
+const i = 0
+const f = arr.length - 1
+console.log(mergeSort(arr, i, f))
