@@ -1,24 +1,26 @@
 const axios = require('axios');
-const { mergeSort } = require('../utils/orderNumbers')
+const { getAll } = require('../models/numbers');
+const numbersServices = require('../services/numbers');
+// const { mergeSort } = require('../utils/orderNumbers')
 
 const extract = async(req, res) => {
     let index = 1
-    let numbers = []
+    // let numbers = []
 
     try {
-        while(true) {
+        while(index < 5) {
             const { data } = await axios(`http://challenge.dienekes.com.br/api/numbers?page=${index}`)
-            numbers.push(...data.numbers)
-            console.log(numbers)
+            await numbersServices.create(data.numbers)
             index += 1
             if (data.numbers.length === 0) break
         }
     } catch(error) {
         console.error(error.response)
     } finally {
-        const orderNumbers = mergeSort(numbers, 0, numbers.length - 1)
-        console.log(orderNumbers)
-        res.status(200).json(orderNumbers)
+        const numbersDb = await numbersServices.getAll()
+        const result = numbersDb.sort((a, b) => a - b )
+        // const orderNumbers = mergeSort(numbersDb, 0, numbersDb.length - 1)
+        res.status(200).json(result)
     }
 }   
 
