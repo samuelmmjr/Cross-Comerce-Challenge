@@ -6,7 +6,7 @@ const extract = async(req, res) => {
     let index = 1
 
     try {
-        while(index < 5) {
+        while(true) {
             const { data } = await axios(`http://challenge.dienekes.com.br/api/numbers?page=${index}`)
             await numbersServices.create(data.numbers)
             index += 1
