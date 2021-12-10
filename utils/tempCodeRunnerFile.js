@@ -1,13 +1,14 @@
-const  mergeSort = (numbers, inicio, fim) => {
+function mergeSort(numbers, inicio, fim) {
     if (inicio < fim) {
         let middle = (inicio + fim) >> 1;
+        console.log(middle);
         mergeSort(numbers, inicio, middle);
         mergeSort(numbers, middle + 1, fim);
         merge(numbers, inicio, middle, fim);
     }
 }
 
-const merge = (numbers, inicio, middle, fim) => {
+function merge(numbers, inicio, middle, fim) {
         let inicio1 = inicio;
         let inicio2 = middle + 1;
         let aux = [];
@@ -34,4 +35,8 @@ const merge = (numbers, inicio, middle, fim) => {
         }
 }
 
-module.exports = { mergeSort }
+
+const arr = [5, 4, 3, 2, 1]
+const i = 0
+const f = arr.length - 1
+console.log(mergeSort(arr, i, f))
