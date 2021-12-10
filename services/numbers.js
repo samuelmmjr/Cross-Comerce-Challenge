@@ -2,7 +2,6 @@ const numbersModels = require('../models/numbers');
 
 const create = async (numbers) => {
     const numbersPage = await numbersModels.create(numbers);
-    console.log('aqui', numbers);
     return numbersPage;
 };
 
